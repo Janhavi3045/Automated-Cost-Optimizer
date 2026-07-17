@@ -1,0 +1,16 @@
+import boto3
+
+ec2 = boto3.client('ec2')
+
+INSTANCE_ID = "i-037283f126e78bdf9"
+
+def lambda_handler(event, context):
+
+    ec2.start_instances(
+        InstanceIds=[INSTANCE_ID]
+    )
+
+    return {
+        'statusCode':200,
+        'body':'EC2 started successfully'
+    }
